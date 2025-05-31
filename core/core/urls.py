@@ -19,9 +19,11 @@ from django.contrib import admin
 from django.urls import path
 
 from home.views import *
+from recipe.views import *
 
 urlpatterns = [
     path("", home, name="home"),
+    path("recipes/", recipes, name="recipes"),
     path("contact/", contact, name="contact"),
     path("about/", about, name="about"),
     path("success-page/", success_page, name="success_page"),
