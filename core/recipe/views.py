@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
 from .models import *
@@ -22,4 +23,13 @@ def recipes(request):
 
         return redirect("/recipes/")
 
-    return render(request, "recipes.html")
+    queryset = Recipe.objects.all()
+    context = {"recipes": queryset}
+
+    return render(request, "recipes.html", context)
+
+
+def delete_recipe(request, id):
+    queryset = Recipe.objects.get(id=id)
+    queryset.delete()
+    return redirect("/recipes/")
